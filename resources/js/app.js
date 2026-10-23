@@ -22,7 +22,7 @@
     if (img && i.files && i.files[0]) { img.src = URL.createObjectURL(i.files[0]); img.hidden = false; }
   });
 
-  /* Effets visuels : reveal au scroll + spotlight. Désactivés si prefers-reduced-motion. */
+  /* Effets visuels : reveal au scroll + spotlight + parallaxe. Désactivés si prefers-reduced-motion. */
   var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var rv = document.querySelectorAll('[data-reveal]');
   if (calm || !('IntersectionObserver' in window)) {
@@ -39,12 +39,21 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
     rv.forEach(function (e) { io.observe(e); });
+    var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var stage = document.querySelector('.stage');
     document.addEventListener('pointermove', function (e) {
       var c = e.target.closest && e.target.closest('.card');
-      if (!c) return;
-      var r = c.getBoundingClientRect();
-      c.style.setProperty('--mx', e.clientX - r.left + 'px');
-      c.style.setProperty('--my', e.clientY - r.top + 'px');
+      if (c) {
+        var r = c.getBoundingClientRect();
+        c.style.setProperty('--mx', e.clientX - r.left + 'px');
+        c.style.setProperty('--my', e.clientY - r.top + 'px');
+      }
+      if (stage && fine) {
+        /* parallaxe légère des maquettes du hero, bornée à [-1, 1] */
+        var s = stage.getBoundingClientRect();
+        stage.style.setProperty('--px', Math.max(-1, Math.min(1, (e.clientX - s.left) / s.width * 2 - 1)).toFixed(2));
+        stage.style.setProperty('--py', Math.max(-1, Math.min(1, (e.clientY - s.top) / s.height * 2 - 1)).toFixed(2));
+      }
     }, { passive: true });
   }
 })();

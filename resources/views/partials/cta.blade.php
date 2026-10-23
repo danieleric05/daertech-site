@@ -1,4 +1,4 @@
-<section class="section cta" aria-labelledby="cta-t"><div class="container">
+<section class="cta" aria-labelledby="cta-t"><div class="container">
   <h2 id="cta-t">Parlons de votre projet</h2>
   <p>Décrivez-nous votre situation : nous revenons vers vous pour voir comment vous aider.</p>
   <div class="btn-row">

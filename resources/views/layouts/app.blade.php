@@ -13,6 +13,7 @@
 <meta name="theme-color" content="#07090f">
 <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 <script>document.documentElement.className+=' rv'</script>
+<style>:root{--mark:url('{{ asset('img/logo-mark-dark.png') }}')}</style>
 @fonts
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
