@@ -1,0 +1,1 @@
+<form method="POST" action="{{ $action }}" data-confirm="{{ $msg ?? 'Supprimer définitivement cet élément ?' }}">@csrf @method('DELETE')<button class="btn danger sm" type="submit">Supprimer</button></form>
