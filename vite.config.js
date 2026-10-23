@@ -12,6 +12,9 @@ export default defineConfig({
                 bunny('Plus Jakarta Sans', {
                     weights: [400, 500, 600, 700, 800],
                 }),
+                bunny('JetBrains Mono', {
+                    weights: [400, 500, 600],
+                }),
             ],
         }),
         tailwindcss(),

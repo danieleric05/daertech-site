@@ -3,7 +3,7 @@
 @section('description', $page->meta_description)
 @section('content')
 <section class="hero page-hero"><div class="container"><h1>{{ $page->hero_title ?: $page->title }}</h1>@if($page->hero_subtitle)<p class="lead">{{ $page->hero_subtitle }}</p>@endif</div></section>
-<section class="section"><div class="container">
+<section class="section dark"><div class="container"><div class="glass">
   @if(!empty($settings['whatsapp']))<p><a class="btn btn-wa" href="https://wa.me/{{ $settings['whatsapp'] }}" rel="noopener noreferrer">Écrire sur WhatsApp</a></p>@endif
   <form class="form" method="POST" action="{{ route('contact.send') }}" novalidate>
     @csrf
@@ -19,5 +19,5 @@
       @error('message')<div class="err" id="message-e">{{ $message }}</div>@enderror</div>
     <div><button class="btn" type="submit">Envoyer</button></div>
   </form>
-</div></section>
+</div></div></section>
 @endsection

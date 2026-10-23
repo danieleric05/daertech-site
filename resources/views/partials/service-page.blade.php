@@ -9,9 +9,9 @@
 </div></section>
 @if(trim((string) $page->content) !== '')<section class="section"><div class="container">@include('partials.content', ['html' => $page->content])</div></section>@endif
 @if($services->isNotEmpty())
-<section class="section alt" aria-labelledby="svc"><div class="container">
-  <h2 id="svc">Nos prestations</h2>
-  <div class="grid cols-3">@foreach($services as $service)@include('partials.service-card')@endforeach</div>
+<section class="section dark" aria-labelledby="svc"><div class="container">
+  <div class="section-head" data-reveal><p class="label">01 / Prestations</p><h2 id="svc">Nos prestations</h2></div>
+  <div class="grid cols-3 bento">@foreach($services as $service)@include('partials.service-card')@endforeach</div>
 </div></section>
 @endif
 @include('partials.cta')
