@@ -1,0 +1,423 @@
+@import 'tailwindcss';
+@import './site.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Noto Color Emoji';
+
+    --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    /* Identité : couleurs du logo */
+    --color-brand-blue: #2a8fc0;
+    --color-brand-red: #c8323f;
+    --color-brand-teal: #0a9a9a;
+    --color-brand-orange: #e8734a;
+    --color-ink: #0a0a0c;
+
+    /* Variantes sombres pour texte/boutons (contraste AA sur blanc) */
+    --color-brand-blue-dark: #1c6f98;
+    --color-brand-teal-dark: #087373;
+    --color-muted: #4b515c;
+    --color-line: #e3e8ec;
+    --color-soft: #f4f8fa;
+    --color-wa: #0e7a3e;
+    --color-night: #07090f;
+
+    --shadow-soft: 0 1px 2px rgb(10 10 12 / 0.04), 0 8px 24px -8px rgb(10 10 12 / 0.1);
+    --shadow-lift: 0 2px 4px rgb(10 10 12 / 0.05), 0 18px 40px -12px rgb(28 111 152 / 0.28);
+}
+
+@layer base {
+    :root {
+        --brand-gradient: linear-gradient(90deg, #2a8fc0, #0a9a9a 40%, #e8734a 72%, #c8323f);
+    }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        @apply bg-white font-sans text-base leading-relaxed text-ink antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+        @apply font-extrabold tracking-tight text-ink;
+        line-height: 1.15;
+    }
+
+    h1 {
+        font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+        letter-spacing: -0.03em;
+        margin-bottom: 0.5em;
+    }
+
+    h2 {
+        font-size: clamp(1.6rem, 3.6vw, 2.35rem);
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5em;
+    }
+
+    h3 {
+        @apply text-lg;
+        margin-bottom: 0.4em;
+    }
+
+    p {
+        margin-bottom: 1em;
+    }
+
+    a {
+        @apply text-brand-blue-dark underline-offset-4;
+    }
+
+    a:hover {
+        @apply text-ink;
+    }
+
+    :focus-visible {
+        @apply outline-3 outline-offset-2 outline-brand-blue-dark;
+    }
+
+    ::selection {
+        background: rgb(42 143 192 / 0.25);
+    }
+}
+
+@utility container {
+    width: min(100% - 2rem, 72rem);
+    margin-inline: auto;
+}
+
+@layer components {
+    .skip {
+        @apply absolute top-0 -left-[999px] z-[100] bg-ink px-4 py-3 text-white;
+    }
+
+    .skip:focus {
+        @apply left-0 text-white;
+    }
+
+    /* ---------- Boutons ---------- */
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-transparent px-5 py-3 text-[0.95rem] leading-tight font-bold text-white no-underline shadow-sm transition;
+        background-image: linear-gradient(135deg, var(--color-brand-blue-dark), var(--color-brand-teal-dark));
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        @apply -translate-y-px text-white shadow-lift;
+        filter: brightness(1.08);
+    }
+
+    .btn-wa {
+        @apply bg-wa;
+        background-image: none;
+    }
+
+    .btn-wa:hover {
+        filter: brightness(1.12);
+    }
+
+    .btn-light {
+        @apply border-white bg-white text-ink;
+        background-image: none;
+    }
+
+    .btn-light:hover {
+        @apply text-ink;
+    }
+
+    .btn-row {
+        @apply mt-6 flex flex-wrap gap-3;
+    }
+
+    /* ---------- Formulaires ---------- */
+    .form {
+        @apply grid max-w-2xl gap-5;
+    }
+
+    .field label {
+        @apply mb-1.5 block text-sm font-bold;
+    }
+
+    .field input:not([type='checkbox'], [type='radio'], [type='file']),
+    .field textarea,
+    .field select {
+        @apply w-full rounded-xl border border-[#8b95a1] bg-white px-4 py-3 text-base text-ink transition;
+    }
+
+    .field input:not([type='checkbox'], [type='radio'], [type='file']):focus,
+    .field textarea:focus,
+    .field select:focus {
+        @apply border-brand-blue-dark outline-2 outline-offset-0 outline-brand-blue-dark;
+    }
+
+    .field input[type='file'] {
+        @apply w-full rounded-xl border border-dashed border-[#8b95a1] bg-soft p-3 text-sm;
+    }
+
+    .field textarea {
+        @apply min-h-40 resize-y;
+    }
+
+    .field .hint {
+        @apply mt-1 block text-sm text-muted;
+    }
+
+    .field .err {
+        @apply mt-1 text-sm font-semibold text-[#b00020];
+    }
+
+    .field [aria-invalid='true'] {
+        @apply border-[#b00020];
+    }
+
+    .hp {
+        @apply absolute -left-[9999px] h-0 overflow-hidden;
+    }
+
+    .flash {
+        @apply my-4 rounded-xl border px-4 py-3 text-[0.95rem];
+    }
+
+    main > .flash {
+        width: min(100% - 2rem, 72rem);
+        margin-inline: auto;
+    }
+
+    .flash.ok {
+        @apply border-[#9bd3b0] bg-[#e6f6ec] text-[#0b4a24];
+    }
+
+    .flash.bad {
+        @apply border-[#f1a9b2] bg-[#fdecee] text-[#7a0012];
+    }
+
+    .flash ul {
+        @apply m-0 list-disc pl-5;
+    }
+
+    /* ---------- Administration ---------- */
+    .admin {
+        @apply bg-soft text-[0.95rem] leading-normal;
+    }
+
+    .admin h1 {
+        @apply mb-5 text-2xl tracking-tight;
+        font-size: 1.65rem;
+    }
+
+    .admin h2 {
+        @apply text-xl;
+    }
+
+    .adm {
+        @apply grid min-h-screen lg:grid-cols-[15rem_1fr];
+    }
+
+    .side {
+        @apply flex flex-col gap-4 border-b border-line bg-white p-4 lg:sticky lg:top-0 lg:h-screen lg:border-r lg:border-b-0 lg:p-5;
+    }
+
+    .side .logo {
+        @apply flex items-center gap-2.5 text-lg font-extrabold tracking-tight text-ink no-underline;
+    }
+
+    .side .logo img {
+        @apply h-8 w-auto mix-blend-multiply;
+    }
+
+    .side .logo small {
+        @apply ml-auto rounded-full bg-soft px-2 py-0.5 text-[0.65rem] font-bold tracking-widest text-muted uppercase;
+    }
+
+    .side nav {
+        @apply flex gap-1 overflow-x-auto lg:flex-1 lg:flex-col lg:overflow-visible;
+    }
+
+    .side nav a {
+        @apply block rounded-lg border-l-[3px] border-transparent px-3 py-2 font-semibold whitespace-nowrap text-muted no-underline;
+    }
+
+    .side nav a:hover {
+        @apply bg-soft text-ink;
+    }
+
+    .side nav a[aria-current='page'] {
+        @apply border-brand-blue bg-brand-blue/10 text-brand-blue-dark;
+    }
+
+    .main {
+        @apply min-w-0 p-5 lg:p-10;
+    }
+
+    .top {
+        @apply mb-5 flex flex-wrap items-center justify-between gap-3;
+    }
+
+    .top h1 {
+        @apply mb-0;
+    }
+
+    .panel {
+        @apply rounded-2xl border border-line bg-white p-6 shadow-soft;
+    }
+
+    .panel dl {
+        @apply mb-4 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2;
+    }
+
+    .stats {
+        @apply mb-6 grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4;
+    }
+
+    .stat {
+        @apply relative overflow-hidden rounded-2xl border border-line bg-white p-5 shadow-soft;
+    }
+
+    .stat::before {
+        content: '';
+        @apply absolute inset-x-0 top-0 h-1;
+        background: var(--brand-gradient);
+    }
+
+    .stat b {
+        @apply block text-4xl leading-tight font-extrabold tracking-tight;
+    }
+
+    .stat span {
+        @apply text-muted;
+    }
+
+    .tw {
+        @apply overflow-x-auto rounded-2xl border border-line bg-white shadow-soft;
+    }
+
+    table {
+        @apply w-full border-collapse;
+    }
+
+    th,
+    td {
+        @apply border-b border-line px-4 py-3 text-left align-middle;
+    }
+
+    th {
+        @apply bg-soft text-xs font-bold tracking-wider text-muted uppercase;
+    }
+
+    tr:last-child td {
+        @apply border-b-0;
+    }
+
+    tbody tr:hover {
+        @apply bg-soft/60;
+    }
+
+    td.act {
+        @apply whitespace-nowrap;
+    }
+
+    td.act form {
+        @apply inline-block;
+    }
+
+    .thumb {
+        @apply h-10 w-14 rounded-md border border-line object-cover;
+    }
+
+    .badge {
+        @apply inline-block rounded-full bg-[#e8eef2] px-2.5 py-0.5 text-xs font-bold text-[#34495a];
+    }
+
+    .badge.published,
+    .badge.ok {
+        @apply bg-[#dff3e6] text-[#0b4a24];
+    }
+
+    .badge.draft {
+        @apply bg-[#fff1cc] text-[#6b4a00];
+    }
+
+    .badge.archived,
+    .badge.off {
+        @apply bg-[#e9e9e9] text-[#444];
+    }
+
+    .unread td {
+        @apply font-bold;
+    }
+
+    .btn.sec {
+        @apply border-line bg-white text-brand-blue-dark shadow-none;
+        background-image: none;
+    }
+
+    .btn.sec:hover {
+        @apply border-brand-blue bg-brand-blue/10 text-brand-blue-dark;
+        filter: none;
+    }
+
+    .btn.danger {
+        @apply border-[#e8b4bb] bg-white text-[#b00020] shadow-none;
+        background-image: none;
+    }
+
+    .btn.danger:hover {
+        @apply border-[#b00020] bg-[#b00020] text-white;
+        filter: none;
+    }
+
+    .btn.sm {
+        @apply rounded-lg border px-3 py-1.5 text-[0.82rem];
+    }
+
+    .preview {
+        @apply mt-2 max-w-56 rounded-xl border border-line;
+    }
+
+    .row2 {
+        @apply grid gap-5 sm:grid-cols-2;
+    }
+
+    .login {
+        @apply mx-auto max-w-md px-4 py-[10vh];
+    }
+
+    .login-brand {
+        @apply mb-6 flex items-center justify-center gap-3 text-2xl font-extrabold tracking-tight;
+    }
+
+    .login-brand img {
+        @apply h-11 w-auto mix-blend-multiply;
+    }
+
+    .login .panel {
+        @apply p-8;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+}
