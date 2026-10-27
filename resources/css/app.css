@@ -297,8 +297,15 @@
         @apply text-muted;
     }
 
+    /* Ombres latérales : signalent qu'un tableau défile horizontalement (local = masquées en bout de course). */
     .tw {
         @apply overflow-x-auto rounded-2xl border border-line bg-white shadow-soft;
+        background:
+            linear-gradient(to right, #fff, #fff) left center / 1.5rem 100% no-repeat local,
+            linear-gradient(to left, #fff, #fff) right center / 1.5rem 100% no-repeat local,
+            linear-gradient(to right, rgb(0 0 0 / 0.14), transparent) left center / 0.75rem 100% no-repeat scroll,
+            linear-gradient(to left, rgb(0 0 0 / 0.14), transparent) right center / 0.75rem 100% no-repeat scroll,
+            #fff;
     }
 
     table {

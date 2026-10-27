@@ -10,6 +10,7 @@ use App\Models\User;
 use Database\Seeders\PageSeeder;
 use Database\Seeders\SettingSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Route;
 use Tests\TestCase;
 
 class SiteTest extends TestCase
@@ -118,5 +119,27 @@ class SiteTest extends TestCase
 
         $this->post('/contact', $valid + ['website' => 'http://spam.test'])->assertSessionHas('success');
         $this->assertSame(1, ContactMessage::count());
+    }
+
+    public function test_contact_throttle_counts_only_valid_submissions(): void
+    {
+        for ($i = 0; $i < 6; $i++) {
+            $this->post('/contact', [])->assertSessionHasErrors('name');
+        }
+
+        $valid = ['name' => 'Awa', 'email' => 'awa@example.ci', 'subject' => 'Bonjour', 'message' => 'Un message assez long.'];
+        for ($i = 0; $i < 5; $i++) {
+            $this->post('/contact', $valid)->assertSessionHas('success');
+        }
+
+        $this->post('/contact', $valid)->assertSessionHasErrors('message')->assertSessionMissing('success');
+        $this->assertSame(5, ContactMessage::count());
+    }
+
+    public function test_429_page_is_in_french(): void
+    {
+        Route::get('/_t429', fn () => abort(429))->middleware('web');
+
+        $this->get('/_t429')->assertStatus(429)->assertSee('Trop de tentatives');
     }
 }
