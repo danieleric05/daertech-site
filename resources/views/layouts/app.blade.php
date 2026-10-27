@@ -29,8 +29,12 @@
 </div></header>
 <main id="main">@include('partials.flash')@yield('content')</main>
 <footer class="site-footer"><div class="container">
-  <div class="grid cols-3">
-    <div><a class="brand" href="{{ route('home') }}"><img src="{{ asset('img/logo-mark-dark.png') }}" alt="" width="36" height="37" loading="lazy"><span>DaerTech</span></a><p class="mt-4">{{ $s['tagline'] ?? '' }}</p></div>
+  @php $soc = ['facebook'=>'Facebook','linkedin'=>'LinkedIn','instagram'=>'Instagram','x'=>'X','youtube'=>'YouTube','tiktok'=>'TikTok']; $has = collect($soc)->keys()->contains(fn($k)=>!empty($s[$k])); @endphp
+  <div class="grid {{ $has ? 'cols-4' : 'cols-3' }}">
+    <div><a class="brand" href="{{ route('home') }}"><img src="{{ asset('img/logo-mark-dark.png') }}" alt="" width="36" height="37"><span>DaerTech</span></a><p class="mt-4">{{ $s['tagline'] ?? '' }}</p></div>
+    <div><h2>Navigation</h2><ul>
+      @foreach($nav as $r => $label)<li><a href="{{ route($r) }}">{{ $label }}</a></li>@endforeach
+    </ul></div>
     <div><h2>Coordonnées</h2><ul>
       @if(!empty($s['phone']))<li>Tél. : <a href="tel:{{ preg_replace('/[^+\d]/','',$s['phone']) }}">{{ $s['phone'] }}</a></li>@endif
       @if(!empty($s['email']))<li><a href="mailto:{{ $s['email'] }}">{{ $s['email'] }}</a></li>@endif
@@ -38,7 +42,6 @@
       @if(!empty($s['hours']))<li>{{ $s['hours'] }}</li>@endif
       <li><a href="{{ route('contact') }}">Formulaire de contact</a></li>
     </ul></div>
-    @php $soc = ['facebook'=>'Facebook','linkedin'=>'LinkedIn','instagram'=>'Instagram','x'=>'X','youtube'=>'YouTube','tiktok'=>'TikTok']; $has = collect($soc)->keys()->contains(fn($k)=>!empty($s[$k])); @endphp
     @if($has)<div><h2>Réseaux</h2><ul>@foreach($soc as $k=>$l)@if(!empty($s[$k]))<li><a href="{{ $s[$k] }}" rel="noopener noreferrer" target="_blank">{{ $l }}<span class="sr-only"> (nouvel onglet)</span></a></li>@endif @endforeach</ul></div>@endif
   </div>
   <p class="small">&copy; {{ date('Y') }} {{ $name }}. Tous droits réservés.</p>

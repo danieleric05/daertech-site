@@ -8,10 +8,10 @@
   <form class="form" method="POST" action="{{ route('contact.send') }}" novalidate>
     @csrf
     <div class="hp" aria-hidden="true"><label>Ne pas remplir<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-    @php $f = [['name','Nom','text',true],['email','E-mail','email',true],['phone','Téléphone','tel',false],['company','Entreprise','text',false],['subject','Sujet','text',true]]; @endphp
-    @foreach($f as [$n,$l,$t,$r])
+    @php $f = [['name','Nom','text',true,'name'],['email','E-mail','email',true,'email'],['phone','Téléphone','tel',false,'tel'],['company','Entreprise','text',false,'organization'],['subject','Sujet','text',true,'off']]; @endphp
+    @foreach($f as [$n,$l,$t,$r,$ac])
     <div class="field"><label for="{{ $n }}">{{ $l }}@if($r) <span aria-hidden="true">*</span>@endif</label>
-      <input id="{{ $n }}" name="{{ $n }}" type="{{ $t }}" value="{{ old($n) }}" @if($r) required @endif @error($n) aria-invalid="true" aria-describedby="{{ $n }}-e" @enderror>
+      <input id="{{ $n }}" name="{{ $n }}" type="{{ $t }}" autocomplete="{{ $ac }}" value="{{ old($n) }}" @if($r) required @endif @error($n) aria-invalid="true" aria-describedby="{{ $n }}-e" @enderror>
       @error($n)<div class="err" id="{{ $n }}-e">{{ $message }}</div>@enderror</div>
     @endforeach
     <div class="field"><label for="message">Message <span aria-hidden="true">*</span></label>

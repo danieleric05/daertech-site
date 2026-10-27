@@ -338,7 +338,7 @@
 
         .site .nav a:not(.btn),
         .site .nav a[aria-current='page']:not(.btn) {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             border: 0;
             background: none;
             font-size: 0.86rem;
@@ -544,7 +544,7 @@
         border-radius: 999px;
         background: var(--glass);
         font-family: var(--font-mono);
-        font-size: 0.72rem;
+        font-size: 0.78rem;
         font-weight: 500;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -652,7 +652,7 @@
         border-radius: 999px;
         background: rgb(255 255 255 / 0.035);
         font-family: var(--font-mono);
-        font-size: 0.74rem;
+        font-size: 0.78rem;
         color: #c4cfdf;
     }
 
@@ -1507,9 +1507,14 @@
     }
 
     .site .more-link {
-        margin-top: 2rem;
+        margin-top: 1.25rem;
         font-family: var(--font-mono);
         font-weight: 500;
+    }
+
+    .site .more-link a {
+        display: inline-block;
+        padding: 0.75rem 0;
     }
 
     /* ---------- Méthode : nœuds hexagonaux reliés ---------- */
@@ -1759,6 +1764,7 @@
 
     .site .banner img {
         width: 100%;
+        aspect-ratio: 16 / 5;
         max-height: 18rem;
         object-fit: cover;
     }
@@ -1916,7 +1922,7 @@
     .site .site-footer h2 {
         margin-bottom: 1rem;
         font-family: var(--font-mono);
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         font-weight: 500;
         letter-spacing: 0.12em;
         text-transform: uppercase;
@@ -1930,7 +1936,12 @@
     }
 
     .site .site-footer li {
-        margin-bottom: 0.55rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .site .site-footer li a {
+        display: inline-block;
+        padding: 0.6rem 0;
     }
 
     .site .site-footer p {
