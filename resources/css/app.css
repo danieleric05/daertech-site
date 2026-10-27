@@ -224,7 +224,7 @@
     }
 
     .side {
-        @apply flex flex-col gap-4 border-b border-line bg-white p-4 lg:sticky lg:top-0 lg:h-screen lg:border-r lg:border-b-0 lg:p-5;
+        @apply flex min-w-0 flex-col gap-4 border-b border-line bg-white p-4 lg:sticky lg:top-0 lg:h-screen lg:border-r lg:border-b-0 lg:p-5;
     }
 
     .side .logo {
@@ -377,7 +377,7 @@
     }
 
     .btn.sm {
-        @apply rounded-lg border px-3 py-1.5 text-[0.82rem];
+        @apply min-h-10 rounded-lg border px-3 py-1.5 text-[0.82rem];
     }
 
     .preview {
