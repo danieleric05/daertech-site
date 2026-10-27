@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
 {
+    public function getPlacementLabelAttribute(): string
+    {
+        return ['home_top' => 'Accueil (haut)', 'sidebar' => 'Colonne latérale', 'footer' => 'Pied de page', 'actualites' => 'Actualités'][$this->placement] ?? (string) $this->placement;
+    }
+
     use HasImage;
 
     public const PLACEMENTS = ['home_top', 'sidebar', 'footer', 'actualites'];

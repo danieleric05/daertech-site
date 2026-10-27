@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\HasImage;
+use App\Models\Concerns\HasStatusLabel;
 use App\Models\Concerns\HasUniqueSlug;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasImage, HasUniqueSlug;
+    use HasStatusLabel;
 
     public const ICONS = ['conseil', 'web', 'mobile', 'marketing', 'formation', 'assistance'];
 

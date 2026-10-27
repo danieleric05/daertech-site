@@ -23,6 +23,7 @@ class SettingRequest extends AdminRequest
     {
         return parent::attributes() + [
             'company_name' => 'nom de l\'entreprise', 'whatsapp' => 'WhatsApp', 'email' => 'e-mail',
+            'facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'instagram' => 'Instagram', 'x' => 'X', 'youtube' => 'YouTube', 'tiktok' => 'TikTok',
         ];
     }
 

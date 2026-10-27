@@ -142,4 +142,22 @@ class SiteTest extends TestCase
 
         $this->get('/_t429')->assertStatus(429)->assertSee('Trop de tentatives');
     }
+
+    public function test_admin_lists_show_french_labels_and_links(): void
+    {
+        $this->actingAs($this->admin());
+        Service::create(['title' => 'Svc A', 'slug' => 'svc-a', 'summary' => 'x', 'status' => 'published', 'position' => 1]);
+        Post::create(['title' => 'Art A', 'slug' => 'art-a', 'body' => 'x', 'status' => 'draft']);
+        Banner::create(['title' => 'Ban A', 'placement' => 'home_top', 'is_active' => true]);
+
+        $this->get('/admin')->assertOk()->assertSee(route('admin.messages.index'), false);
+        $this->get('/admin/services')->assertOk()->assertSee('Publié')->assertSee('Sans page')->assertDontSee('>published<', false);
+        $this->get('/admin/posts')->assertOk()->assertSee('Brouillon')->assertSee('Publier');
+        Post::create(['title' => 'Art B', 'slug' => 'art-b', 'body' => 'x', 'status' => 'published', 'published_at' => now()->subDay()]);
+        $this->get('/admin/posts?status=draft')->assertOk()->assertSee('Art A')->assertDontSee('Art B');
+        $this->get('/admin/posts?status=published')->assertOk()->assertSee('Art B')->assertDontSee('Art A');
+        $this->get('/admin/banners')->assertOk()->assertSee('Accueil (haut)');
+        $this->get('/admin/messages')->assertOk()->assertSee('Aucun message pour le moment.');
+        $this->get('/admin/settings')->assertOk()->assertSee('type="url"', false);
+    }
 }

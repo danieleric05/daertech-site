@@ -11,6 +11,8 @@
     });
     n.addEventListener('click', function (e) { if (e.target.closest('a')) close(); });
   }
+  var bad = document.querySelector('[aria-invalid="true"]');
+  if (bad) bad.focus();
   document.addEventListener('submit', function (e) {
     var m = e.target.getAttribute && e.target.getAttribute('data-confirm');
     if (m && !window.confirm(m)) e.preventDefault();

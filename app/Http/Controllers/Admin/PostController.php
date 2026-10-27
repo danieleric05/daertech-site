@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostRequest;
 use App\Models\Post;
 use App\Support\ImageUploader;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
 class PostController extends Controller implements HasMiddleware
@@ -16,9 +17,16 @@ class PostController extends Controller implements HasMiddleware
 
     private const PARAM = 'post';
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.posts.index', ['posts' => Post::latest('id')->paginate(20)]);
+        $status = $request->query('status');
+        $posts = Post::latest('id')
+            ->when($status === 'published', fn ($q) => $q->published())
+            ->when($status === 'draft', fn ($q) => $q->where('status', 'draft'))
+            ->paginate(20)
+            ->withQueryString();
+
+        return view('admin.posts.index', ['posts' => $posts]);
     }
 
     public function create()

@@ -1252,6 +1252,7 @@
 
     .site .card .more {
         margin-top: auto;
+        padding: 0.6rem 0;
         font-family: var(--font-mono);
         font-size: 0.85rem;
         font-weight: 500;
