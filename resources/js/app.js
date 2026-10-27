@@ -11,6 +11,18 @@
     });
     n.addEventListener('click', function (e) { if (e.target.closest('a')) close(); });
   }
+  var tg = document.querySelector('.theme-toggle');
+  if (tg) {
+    var root = document.documentElement;
+    tg.hidden = false;
+    tg.setAttribute('aria-pressed', root.dataset.theme === 'dark' ? 'true' : 'false');
+    tg.addEventListener('click', function () {
+      var dark = root.dataset.theme !== 'dark';
+      if (dark) root.dataset.theme = 'dark'; else delete root.dataset.theme;
+      tg.setAttribute('aria-pressed', dark ? 'true' : 'false');
+      try { localStorage.setItem('adm-theme', dark ? 'dark' : 'light'); } catch (e) {}
+    });
+  }
   var bad = document.querySelector('[aria-invalid="true"]');
   if (bad) bad.focus();
   document.addEventListener('submit', function (e) {

@@ -160,4 +160,13 @@ class SiteTest extends TestCase
         $this->get('/admin/messages')->assertOk()->assertSee('Aucun message pour le moment.');
         $this->get('/admin/settings')->assertOk()->assertSee('type="url"', false);
     }
+
+    public function test_admin_has_dark_mode_toggle_and_public_site_does_not(): void
+    {
+        $this->get('/admin/login')->assertOk()->assertSee('adm-theme', false);
+
+        $this->actingAs($this->admin());
+        $this->get('/admin')->assertOk()->assertSee('theme-toggle', false)->assertSee('adm-theme', false);
+        $this->get('/')->assertOk()->assertDontSee('adm-theme', false)->assertDontSee('theme-toggle', false);
+    }
 }
