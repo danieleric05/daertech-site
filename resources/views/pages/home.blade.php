@@ -27,6 +27,19 @@
   <div class="hero-vis" aria-hidden="true">
     <div class="stage">
       <div class="st-flower"></div>
+      <svg class="st-wires" viewBox="0 0 100 100" fill="none" focusable="false">
+        <g class="wires">
+          <path class="w-b" d="M24 11V5H9"/>
+          <path class="w-t" d="M66 11V6h24"/>
+          <path class="w-o" d="M58 90H63V82.4"/>
+          <path class="w-r" d="M40 64V78"/>
+        </g>
+        <g class="wnodes">
+          <path class="n-b" d="M9 2.6 11.1 3.8V6.2L9 7.4 6.9 6.2V3.8z"/>
+          <path class="n-t" d="M90 3.6 92.1 4.8V7.2L90 8.4 87.9 7.2V4.8z"/>
+          <path class="n-o" d="M63 77.6 65.1 78.8V81.2L63 82.4 60.9 81.2V78.8z"/>
+        </g>
+      </svg>
       <div class="mk mk-browser" style="--i:1;--d:10">
         <div class="bw-bar"><i></i><i></i><i></i><span class="bw-url"></span></div>
         <div class="bw-body">
