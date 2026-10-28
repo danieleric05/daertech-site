@@ -42,6 +42,7 @@
     --chain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 26'%3E%3Cpath d='M11.0 2.0L20.5 7.5L20.5 18.5L11.0 24.0L1.5 18.5L1.5 7.5Z' fill='%232A8FC0'/%3E%3Cpath d='M36.0 2.0L45.5 7.5L45.5 18.5L36.0 24.0L26.5 18.5L26.5 7.5Z' fill='%230A9A9A'/%3E%3Cpath d='M61.0 2.0L70.5 7.5L70.5 18.5L61.0 24.0L51.5 18.5L51.5 7.5Z' fill='%23E8734A'/%3E%3Cpath d='M86.0 2.0L95.5 7.5L95.5 18.5L86.0 24.0L76.5 18.5L76.5 7.5Z' fill='%23C8323F'/%3E%3C/svg%3E");
     --honey: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97'%3E%3Cpath d='M28 0L56 16.17V48.5L28 64.67L0 48.5V16.17ZM28 64.67V97' fill='none' stroke='%23fff' stroke-opacity='.07' stroke-width='1'/%3E%3C/svg%3E");
     --flower: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 520'%3E%3Cpath d='M260.0 184.0L325.8 222.0L325.8 298.0L260.0 336.0L194.2 298.0L194.2 222.0Z' fill='none' stroke='%23fff' stroke-opacity='.16' stroke-width='1.5'/%3E%3Cpath d='M118.0 184.0L183.8 222.0L183.8 298.0L118.0 336.0L52.2 298.0L52.2 222.0Z' fill='%232A8FC0' fill-opacity='.2' stroke='%232A8FC0' stroke-opacity='.85' stroke-width='2'/%3E%3Cpath d='M331.0 61.0L396.8 99.0L396.8 175.0L331.0 213.0L265.2 175.0L265.2 99.0Z' fill='%23C8323F' fill-opacity='.2' stroke='%23C8323F' stroke-opacity='.85' stroke-width='2'/%3E%3Cpath d='M402.0 184.0L467.8 222.0L467.8 298.0L402.0 336.0L336.2 298.0L336.2 222.0Z' fill='%23E8734A' fill-opacity='.2' stroke='%23E8734A' stroke-opacity='.85' stroke-width='2'/%3E%3Cpath d='M189.0 307.0L254.8 345.0L254.8 421.0L189.0 459.0L123.2 421.0L123.2 345.0Z' fill='%230A9A9A' fill-opacity='.2' stroke='%230A9A9A' stroke-opacity='.85' stroke-width='2'/%3E%3Cpath d='M189.0 61.0L254.8 99.0L254.8 175.0L189.0 213.0L123.2 175.0L123.2 99.0Z' fill='none' stroke='%23fff' stroke-opacity='.16' stroke-width='1.5'/%3E%3Cpath d='M331.0 307.0L396.8 345.0L396.8 421.0L331.0 459.0L265.2 421.0L265.2 345.0Z' fill='none' stroke='%23fff' stroke-opacity='.16' stroke-width='1.5'/%3E%3Cpath d='M118.0 212.0L159.6 236.0L159.6 284.0L118.0 308.0L76.4 284.0L76.4 236.0Z' fill='none' stroke='%232A8FC0' stroke-opacity='.45' stroke-width='1.5'/%3E%3Cpath d='M331.0 89.0L372.6 113.0L372.6 161.0L331.0 185.0L289.4 161.0L289.4 113.0Z' fill='none' stroke='%23C8323F' stroke-opacity='.45' stroke-width='1.5'/%3E%3Cpath d='M402.0 212.0L443.6 236.0L443.6 284.0L402.0 308.0L360.4 284.0L360.4 236.0Z' fill='none' stroke='%23E8734A' stroke-opacity='.45' stroke-width='1.5'/%3E%3Cpath d='M189.0 335.0L230.6 359.0L230.6 407.0L189.0 431.0L147.4 407.0L147.4 359.0Z' fill='none' stroke='%230A9A9A' stroke-opacity='.45' stroke-width='1.5'/%3E%3C/svg%3E");
+    --grid: linear-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px) 0 0 / 28px 28px, linear-gradient(90deg, rgb(255 255 255 / 0.06) 1px, transparent 1px) 0 0 / 28px 28px;
     --blueprint: linear-gradient(120deg, #1b5f8c, #17788a 55%, #148178);
     --hexclip: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 }
@@ -49,12 +50,12 @@
 @layer components {
     /* ---------- Socle ---------- */
     body.site {
-        background: var(--night);
+        background: var(--grid), var(--night);
         color: var(--on-dark);
     }
 
     :root:has(body.site) {
-        background: var(--night);
+        background: var(--grid), var(--night);
     }
 
     .site h1,
@@ -1062,12 +1063,12 @@
 
     .site .section.dark {
         overflow: hidden;
-        background: var(--night-2);
+        background: var(--grid), var(--night-2);
     }
 
     .site .section.alt {
         overflow: hidden;
-        background: var(--night-3);
+        background: var(--grid), var(--night-3);
     }
 
     /* Trame en nid d'abeille et filigrane du logo */
