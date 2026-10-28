@@ -24,49 +24,26 @@
       <li>Suivi dans la durée</li>
     </ul>
   </div>
-  <div class="hero-vis" aria-hidden="true">
+  <div class="hero-vis">
     <div class="stage">
-      <div class="st-flower"></div>
-      <svg class="st-wires" viewBox="0 0 100 100" fill="none" focusable="false">
+      <div class="st-flower" aria-hidden="true"></div>
+      <svg class="st-wires" viewBox="0 0 100 100" fill="none" focusable="false" aria-hidden="true">
         <g class="wires">
-          <path class="w-b" d="M24 11V5H9"/>
-          <path class="w-t" d="M66 11V6h24"/>
-          <path class="w-o" d="M58 90H63V82.4"/>
-          <path class="w-r" d="M40 64V78"/>
+          <path class="w-b" d="M12 26V12H3"/>
+          <path class="w-t" d="M88 26V10H97"/>
+          <path class="w-o" d="M70 84V94H92"/>
+          <path class="w-r" d="M30 84V92H14"/>
         </g>
         <g class="wnodes">
-          <path class="n-b" d="M9 2.6 11.1 3.8V6.2L9 7.4 6.9 6.2V3.8z"/>
-          <path class="n-t" d="M90 3.6 92.1 4.8V7.2L90 8.4 87.9 7.2V4.8z"/>
-          <path class="n-o" d="M63 77.6 65.1 78.8V81.2L63 82.4 60.9 81.2V78.8z"/>
+          <path class="n-b" d="M3 9.6 5.1 10.8V13.2L3 14.4 0.9 13.2V10.8z"/>
+          <path class="n-t" d="M97 7.6 99.1 8.8V11.2L97 12.4 94.9 11.2V8.8z"/>
+          <path class="n-o" d="M92 91.6 94.1 92.8V95.2L92 96.4 89.9 95.2V92.8z"/>
         </g>
       </svg>
-      <div class="mk mk-browser" style="--i:1;--d:10">
-        <div class="bw-bar"><i></i><i></i><i></i><span class="bw-url"></span></div>
-        <div class="bw-body">
-          <div class="bw-nav"><span class="hx"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="bw-cta"></span></div>
-          <div class="bw-hero">
-            <div class="bw-copy"><span class="ln t1"></span><span class="ln t1 w60"></span><span class="ln w80"></span><span class="ln w60"></span><span class="btn-sk"></span></div>
-            <div class="bw-art"></div>
-          </div>
-          <div class="bw-tiles">
-            <div><span class="hx"></span><span class="ln"></span><span class="ln w60"></span></div>
-            <div><span class="hx t"></span><span class="ln"></span><span class="ln w60"></span></div>
-            <div><span class="hx o"></span><span class="ln"></span><span class="ln w60"></span></div>
-          </div>
+      <div class="pt-frame">
+        <div class="pt-photo">
+          <img src="{{ asset('img/portrait-960.webp') }}" srcset="{{ asset('img/portrait-640.webp') }} 640w, {{ asset('img/portrait-960.webp') }} 960w" sizes="(min-width: 64rem) 30rem, 80vw" width="960" height="1107" alt="Portrait du fondateur de DaerTech" loading="eager" fetchpriority="high" decoding="async">
         </div>
-      </div>
-      <div class="mk mk-phone" style="--i:2;--d:22">
-        <span class="ph-notch"></span>
-        <div class="ph-head"><span class="hx"></span><span class="ln"></span></div>
-        <div class="ph-row"><span class="hx t"></span><span class="ln"></span><span class="ln w60"></span></div>
-        <div class="ph-row"><span class="hx o"></span><span class="ln"></span><span class="ln w60"></span></div>
-        <div class="ph-row"><span class="hx r"></span><span class="ln"></span><span class="ln w60"></span></div>
-        <div class="ph-tabs"><i></i><i></i><i></i><i></i></div>
-      </div>
-      <div class="mk mk-flow" style="--i:3;--d:16">
-        <div class="fl-node"><span class="hx"></span><span>Besoin</span></div><span class="fl-link"></span>
-        <div class="fl-node"><span class="hx t"></span><span>Outils</span></div><span class="fl-link"></span>
-        <div class="fl-node"><span class="hx o"></span><span>En ligne</span></div>
       </div>
     </div>
   </div>
@@ -79,11 +56,26 @@
     @endforeach
   </div>
 </section>
+<section class="section eng-sec" aria-labelledby="eng"><div class="container">
+  <h2 class="sr-only" id="eng">Nos engagements</h2>
+  <ul class="eng-grid">
+    <li class="eng t-conseil" data-reveal><h3><span class="eng-fig" aria-hidden="true">A–Z</span><span>De A à Z</span></h3><p>Du conseil à la mise en ligne, puis à la prise en main par vos équipes.</p></li>
+    <li class="eng t-web" data-reveal><h3><span class="eng-fig">4</span><span>étapes</span></h3><p>Écouter, cadrer, mettre en place, accompagner.</p></li>
+    <li class="eng t-formation" data-reveal><h3><span class="eng-fig">3</span><span>domaines</span></h3><p>Conseil, web et applications, formation et assistance.</p></li>
+  </ul>
+</div></section>
 @if($banner)<div class="band"><div class="container">@include('partials.banner')</div></div>@endif
 @if(trim((string) $page->content) !== '')<section class="section"><div class="container">@include('partials.content', ['html' => $page->content])</div></section>@endif
 <section class="section dark" aria-labelledby="svc"><div class="container">
   <div class="section-head" data-reveal><p class="label">01 / Services</p><h2 id="svc">Nos services</h2><p>Du choix des outils à leur mise en place, nous vous accompagnons selon votre réalité.</p></div>
-  <div class="grid cols-3 bento">@forelse($services as $service)@include('partials.service-card')@empty<p>Nos services seront bientôt détaillés ici.</p>@endforelse</div>
+  @php $routes = ['conseil'=>'conseil','marketing'=>'conseil','web'=>'developpement','mobile'=>'developpement','formation'=>'formation','assistance'=>'formation']; @endphp
+  <ol class="svc-list">@forelse($services as $service)
+    <li data-reveal><a href="{{ route($routes[$service->icon] ?? 'contact') }}" class="svc-row t-{{ $service->icon }}">
+      <span class="svc-n" aria-hidden="true">{{ sprintf('%02d', $loop->iteration) }}</span>
+      <div class="svc-t"><h3>{{ $service->title }}</h3><p>{{ $service->summary }}</p></div>
+      <svg class="svc-go" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a></li>
+  @empty<li><p>Nos services seront bientôt détaillés ici.</p></li>@endforelse</ol>
 </div></section>
 <section class="section alt" aria-labelledby="meth"><div class="container">
   <div class="section-head" data-reveal><p class="label">02 / Méthode</p><h2 id="meth">Notre méthode d'accompagnement</h2><p>Quatre étapes simples, pour avancer sans vous perdre dans la technique.</p></div>

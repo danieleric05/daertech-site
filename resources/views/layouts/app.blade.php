@@ -44,7 +44,10 @@
     </ul></div>
     @if($has)<div><h2>Réseaux</h2><ul>@foreach($soc as $k=>$l)@if(!empty($s[$k]))<li><a href="{{ $s[$k] }}" rel="noopener noreferrer" target="_blank">{{ $l }}<span class="sr-only"> (nouvel onglet)</span></a></li>@endif @endforeach</ul></div>@endif
   </div>
-  <p class="small">&copy; {{ date('Y') }} {{ $name }}. Tous droits réservés.</p>
+  <div class="small foot-bar">
+    <p>&copy; {{ date('Y') }} {{ $name }}. Tous droits réservés.</p>
+    <ul class="legal"><li><a href="{{ route('conditions') }}">Conditions d'utilisation</a></li><li><a href="{{ route('cookies') }}">Politique de cookies</a></li></ul>
+  </div>
 </div></footer>
 @if(!empty($s['whatsapp']))<a class="wa-float" href="https://wa.me/{{ $s['whatsapp'] }}" rel="noopener noreferrer" aria-label="Discuter sur WhatsApp">WhatsApp</a>@endif
 </body>

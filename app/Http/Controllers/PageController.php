@@ -39,6 +39,21 @@ class PageController extends Controller
         return view('pages.contact', ['page' => Page::where('slug', 'contact')->firstOrFail()]);
     }
 
+    public function cookies()
+    {
+        return $this->legalPage('cookies');
+    }
+
+    public function conditions()
+    {
+        return $this->legalPage('conditions');
+    }
+
+    private function legalPage(string $slug)
+    {
+        return view('pages.legal', ['page' => Page::where('slug', $slug)->firstOrFail()]);
+    }
+
     private function servicePage(string $slug)
     {
         return view('pages.'.$slug, [

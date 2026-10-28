@@ -681,17 +681,22 @@
         background-image: var(--hexs-r);
     }
 
-    /* ---------- Visuel produit (décoratif) ---------- */
+    /* ---------- Portrait du hero ---------- */
     .site .hero-vis {
         position: relative;
         width: 100%;
-        max-width: 36rem;
+        max-width: 22rem;
         margin-inline: auto;
+    }
+
+    @media (min-width: 64rem) {
+        .site .hero-vis {
+            max-width: 34rem;
+        }
     }
 
     .site .stage {
         position: relative;
-        container-type: inline-size;
         aspect-ratio: 1 / 1;
     }
 
@@ -702,266 +707,188 @@
         opacity: 0.95;
     }
 
-    .site .mk {
+    /* Cadre hexagonal : liseré dégradé aux couleurs du logo, photo voilée à l'intérieur */
+    .site .pt-frame {
         position: absolute;
-        border: 1px solid rgb(255 255 255 / 0.14);
-        background: rgb(10 15 27 / 0.88);
-        box-shadow:
-            0 4cqw 9cqw -3cqw rgb(0 0 0 / 0.65),
-            0 0 0 1px rgb(255 255 255 / 0.03) inset;
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        font-family: var(--font-mono);
-    }
-
-    .site .ln {
-        display: block;
-        height: 1.5cqw;
-        border-radius: 1cqw;
-        background: rgb(255 255 255 / 0.14);
-    }
-
-    .site .ln.w40 {
-        width: 40%;
-    }
-
-    .site .ln.w60 {
-        width: 60%;
-    }
-
-    .site .ln.w80 {
-        width: 80%;
-    }
-
-    /* Fenêtre de navigateur : site vitrine */
-    .site .mk-browser {
-        left: 3%;
-        top: 11%;
-        width: 80%;
-        overflow: hidden;
-        border-radius: 2.2cqw;
-    }
-
-    .site .bw-bar {
-        display: flex;
-        align-items: center;
-        gap: 1.1cqw;
-        height: 5.4cqw;
-        padding: 0 2.2cqw;
-        border-bottom: 1px solid rgb(255 255 255 / 0.08);
-    }
-
-    .site .bw-bar i {
-        width: 1.7cqw;
-        aspect-ratio: 1;
-        border-radius: 50%;
-        background: var(--c-red);
-    }
-
-    .site .bw-bar i:nth-child(2) {
-        background: var(--c-orange);
-    }
-
-    .site .bw-bar i:nth-child(3) {
-        background: var(--c-teal);
-    }
-
-    .site .bw-url {
-        flex: 1;
-        height: 2.6cqw;
-        margin-left: 2cqw;
-        border-radius: 1.3cqw;
-        background: rgb(255 255 255 / 0.07);
-    }
-
-    .site .bw-body {
-        display: grid;
-        gap: 2.6cqw;
-        padding: 2.6cqw 3cqw;
-    }
-
-    .site .bw-nav {
-        display: flex;
-        align-items: center;
-        gap: 2.2cqw;
-    }
-
-    .site .bw-nav .hx {
-        width: 3.4cqw;
-    }
-
-    .site .bw-nav .ln {
-        width: 7cqw;
-    }
-
-    .site .bw-nav .bw-cta {
-        width: 9cqw;
-        height: 3.2cqw;
-        margin-left: auto;
-        border-radius: 1cqw;
-        background: linear-gradient(135deg, #1a6e9a, #08777a);
-    }
-
-    .site .bw-hero {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-        align-items: stretch;
-        gap: 3cqw;
-    }
-
-    .site .bw-copy {
-        display: grid;
-        gap: 1.6cqw;
-    }
-
-    .site .bw-copy .t1 {
-        height: 3.4cqw;
-        background: rgb(255 255 255 / 0.82);
-    }
-
-    .site .bw-copy .btn-sk {
-        width: 15cqw;
-        height: 4cqw;
-        margin-top: 0.8cqw;
-        border-radius: 1.2cqw;
-        background: linear-gradient(135deg, #1a6e9a, #08777a);
-    }
-
-    .site .bw-art {
-        background: var(--flower) 50% 45% / auto 190% no-repeat;
-    }
-
-    .site .bw-tiles {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 2cqw;
-    }
-
-    .site .bw-tiles > div {
-        display: grid;
-        gap: 1.2cqw;
-        padding: 2cqw;
-        border: 1px solid rgb(255 255 255 / 0.08);
-        border-radius: 1.6cqw;
-        background: rgb(255 255 255 / 0.03);
-    }
-
-    .site .bw-tiles .hx {
-        width: 3.6cqw;
-        margin-bottom: 0.6cqw;
-    }
-
-    /* Application mobile */
-    .site .mk-phone {
-        right: 1%;
-        bottom: 2%;
-        width: 29%;
-        height: 58%;
-        display: flex;
-        flex-direction: column;
-        gap: 2.2cqw;
-        padding: 2.4cqw 2.4cqw 2cqw;
-        border-radius: 4.4cqw;
-        border-width: 0.5cqw;
-        border-color: rgb(255 255 255 / 0.2);
-    }
-
-    .site .ph-notch {
-        width: 28%;
-        height: 1.6cqw;
-        margin: 0 auto 0.6cqw;
-        border-radius: 1cqw;
-        background: rgb(255 255 255 / 0.12);
-    }
-
-    .site .ph-head {
-        display: flex;
-        align-items: center;
-        gap: 1.6cqw;
-        margin-bottom: 0.4cqw;
-    }
-
-    .site .ph-head .hx {
-        width: 3.6cqw;
-    }
-
-    .site .ph-head .ln {
-        flex: 1;
-        background: rgb(255 255 255 / 0.5);
-    }
-
-    .site .ph-row {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto auto;
-        column-gap: 1.8cqw;
-        row-gap: 1cqw;
-        align-items: center;
-        padding: 1.8cqw;
-        border-radius: 2cqw;
-        background: rgb(255 255 255 / 0.05);
-    }
-
-    .site .ph-row .hx {
-        grid-row: span 2;
-        width: 4.2cqw;
-    }
-
-    .site .ph-tabs {
-        display: flex;
-        justify-content: space-around;
-        margin-top: auto;
-        padding-top: 1.6cqw;
-        border-top: 1px solid rgb(255 255 255 / 0.08);
-    }
-
-    .site .ph-tabs i {
-        width: 2.6cqw;
+        top: 50%;
+        left: 50%;
+        height: 90%;
         aspect-ratio: 52 / 60;
-        background: var(--hexs-b) center / 100% 100% no-repeat;
-        opacity: 0.9;
+        translate: -50% -50%;
+        clip-path: var(--hexclip);
+        background: linear-gradient(150deg, var(--c-blue), var(--c-teal) 38%, var(--c-orange) 72%, var(--c-red));
     }
 
-    .site .ph-tabs i:nth-child(2) {
-        background-image: var(--hexs-t);
+    .site .pt-photo {
+        position: absolute;
+        inset: 3px;
+        overflow: hidden;
+        clip-path: var(--hexclip);
+        background: var(--night);
     }
 
-    .site .ph-tabs i:nth-child(3) {
-        background-image: var(--hexs-o);
+    .site .pt-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 28%;
+        filter: saturate(0.9) contrast(1.04) brightness(0.94);
     }
 
-    .site .ph-tabs i:nth-child(4) {
-        background-image: var(--hexs-r);
+    .site .pt-photo::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(180deg, rgb(6 9 18 / 0.18), transparent 28%, rgb(6 9 18 / 0.78) 100%),
+            linear-gradient(120deg, rgb(42 143 192 / 0.3), transparent 55%);
     }
 
-    /* Flux : besoin, outils, en ligne */
-    .site .mk-flow {
-        left: 0;
-        bottom: 5%;
-        display: flex;
-        align-items: center;
-        width: 58%;
-        padding: 2.4cqw 2.8cqw;
-        border-radius: 2.2cqw;
+    .site .hero-vis::before {
+        content: '';
+        position: absolute;
+        inset: 6%;
+        z-index: -1;
+        background: radial-gradient(closest-side, rgb(42 143 192 / 0.38), rgb(10 154 154 / 0.14) 60%, transparent);
     }
 
-    .site .fl-node {
+    /* ---------- Engagements ---------- */
+    .site .eng-sec {
+        padding: 3.5rem 0;
+    }
+
+    .site .eng-grid {
         display: grid;
-        justify-items: center;
-        gap: 1.2cqw;
-        font-size: max(9px, 2.5cqw);
-        color: #c9d3e3;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
 
-    .site .fl-node .hx {
-        width: 5.4cqw;
+    @media (min-width: 48rem) {
+        .site .eng-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
     }
 
-    .site .fl-link {
-        flex: 1;
-        height: 0;
-        margin: 0 1.2cqw 3.4cqw;
-        border-top: 0.45cqw dashed rgb(255 255 255 / 0.28);
+    .site .eng {
+        position: relative;
+        padding: 1.6rem 1.6rem 1.75rem;
+        border: 1px solid var(--glass-line);
+        border-radius: 0.9rem;
+        background: var(--glass);
+    }
+
+    .site .eng::after {
+        content: '';
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        width: 1.5rem;
+        aspect-ratio: 52 / 60;
+        background: var(--hexbg) center / 100% 100% no-repeat;
+    }
+
+    .site .eng h3 {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.15rem 0.65rem;
+        margin: 0 0 0.75rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        line-height: 1.1;
+        color: #fff;
+    }
+
+    .site .eng-fig {
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 6vw, 4.25rem);
+        font-weight: 800;
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        color: var(--tone-t);
+    }
+
+    .site .eng p {
+        margin: 0;
+        color: var(--on-dark-muted);
+    }
+
+    /* ---------- Services en liste numérotée ---------- */
+    .site .svc-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid var(--glass-line);
+    }
+
+    .site .svc-list > li {
+        border-bottom: 1px solid var(--glass-line);
+    }
+
+    .site .svc-row {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 1rem clamp(1rem, 3vw, 2rem);
+        min-height: 2.75rem;
+        padding: 1.5rem 0.5rem;
+        text-decoration: none;
+        color: inherit;
+        transition: background-color 0.25s;
+    }
+
+    .site .svc-row:hover {
+        background: rgb(255 255 255 / 0.035);
+    }
+
+    .site .svc-row:focus-visible {
+        outline: 2px solid var(--t-blue);
+        outline-offset: -2px;
+    }
+
+    .site .svc-n {
+        min-width: 2ch;
+        font-family: var(--font-display);
+        font-size: clamp(1.75rem, 4vw, 2.75rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        font-variant-numeric: tabular-nums;
+        color: var(--tone-t);
+    }
+
+    .site .svc-t h3 {
+        margin: 0 0 0.3rem;
+        font-size: clamp(1.2rem, 2.6vw, 1.65rem);
+        color: #fff;
+    }
+
+    .site .svc-t p {
+        max-width: 46rem;
+        margin: 0;
+        color: var(--on-dark-muted);
+    }
+
+    .site .svc-go {
+        box-sizing: content-box;
+        width: 1.3rem;
+        height: 1.3rem;
+        padding: 0.85rem 0.65rem;
+        clip-path: var(--hexclip);
+        background: color-mix(in srgb, var(--tone) 22%, transparent);
+        color: var(--tone-t);
+        transition:
+            background-color 0.25s,
+            color 0.25s;
+    }
+
+    .site .svc-row:hover .svc-go {
+        background: var(--tone);
+        color: #fff;
     }
 
     /* ---------- Bandeau technologies (unique) ---------- */
@@ -1762,6 +1689,12 @@
         margin-top: 2rem;
     }
 
+    .site .legal-page .prose h2 {
+        margin-bottom: 0.6rem;
+        font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+        letter-spacing: -0.02em;
+    }
+
     .site .prose strong {
         color: #fff;
     }
@@ -1993,6 +1926,31 @@
         height: 2.6rem;
     }
 
+    .site .site-footer .foot-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.25rem 2rem;
+    }
+
+    .site .site-footer .foot-bar p {
+        margin: 0;
+    }
+
+    .site .site-footer .legal {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 1.5rem;
+    }
+
+    .site .site-footer .legal a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.75rem;
+        padding: 0;
+    }
+
     .site .site-footer .small {
         margin: 2.5rem 0 0;
         padding-top: 1.25rem;
@@ -2073,11 +2031,8 @@
             animation: bloom 1.2s var(--ease-out) both;
         }
 
-        .site .mk {
-            animation: pop 0.9s var(--ease-out) both;
-            animation-delay: calc(var(--i, 1) * 140ms + 200ms);
-            transform: translate(calc(var(--px, 0) * var(--d, 0) * 1px), calc(var(--py, 0) * var(--d, 0) * 1px));
-            transition: transform 0.35s var(--ease-out);
+        .site .pt-frame {
+            animation: pop 0.9s var(--ease-out) 0.2s both;
         }
     }
 
@@ -2472,16 +2427,6 @@
         border-top: 0;
     }
 
-    .site .mk-browser::after {
-        content: '';
-        position: absolute;
-        inset: 0 0 auto;
-        height: 22%;
-        background: linear-gradient(180deg, transparent, rgb(63 214 204 / 0.13), transparent);
-        opacity: 0;
-        pointer-events: none;
-    }
-
     @media (prefers-reduced-motion: no-preference) {
         .site .wires path {
             animation: wire-flow 1.8s linear infinite;
@@ -2510,11 +2455,6 @@
         .site .st-wires {
             translate: calc(var(--px, 0) * -9px) calc(var(--py, 0) * -9px);
             transition: translate 0.35s var(--ease-out);
-        }
-
-        .site .mk-browser::after {
-            opacity: 1;
-            animation: scan 7s var(--ease-out) 1.5s infinite;
         }
 
         .site .steps li:not(:last-child)::after {
@@ -2546,17 +2486,6 @@
 @keyframes node-glow {
     50% {
         opacity: 0.45;
-    }
-}
-
-@keyframes scan {
-    0% {
-        transform: translateY(-100%);
-    }
-
-    60%,
-    100% {
-        transform: translateY(520%);
     }
 }
 

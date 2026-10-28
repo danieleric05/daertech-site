@@ -35,6 +35,15 @@ class SiteTest extends TestCase
         }
     }
 
+    public function test_legal_pages_render_and_are_linked_in_footer(): void
+    {
+        $home = $this->get('/')->assertOk();
+        $this->get('/politique-de-cookies')->assertOk()->assertSee('Politique de cookies')->assertSee('Dernière mise à jour');
+        $this->get('/conditions-d-utilisation')->assertOk()->assertSee('Conditions d\'utilisation', false)->assertSee('Dernière mise à jour');
+
+        $home->assertSee(route('cookies'), false)->assertSee(route('conditions'), false);
+    }
+
     public function test_unpublished_and_future_posts_hidden(): void
     {
         $draft = Post::create(['title' => 'Brouillon', 'slug' => 'brouillon', 'body' => 'x', 'status' => 'draft']);

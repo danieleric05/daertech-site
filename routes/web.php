@@ -13,6 +13,8 @@ Route::get('/formation-assistance', [PageController::class, 'formation'])->name(
 Route::get('/actualites', [PostController::class, 'index'])->name('actualites.index');
 Route::get('/actualites/{post:slug}', [PostController::class, 'show'])->name('actualites.show');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::get('/politique-de-cookies', [PageController::class, 'cookies'])->name('cookies');
+Route::get('/conditions-d-utilisation', [PageController::class, 'conditions'])->name('conditions');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 Route::prefix('admin')->name('admin.')->group(function () {
