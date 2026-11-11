@@ -42,10 +42,11 @@
       </svg>
       <div class="pt-frame">
         <div class="pt-photo">
-          <img src="{{ asset('img/portrait-960.webp') }}" srcset="{{ asset('img/portrait-640.webp') }} 640w, {{ asset('img/portrait-960.webp') }} 960w" sizes="(min-width: 64rem) 30rem, 80vw" width="960" height="1107" alt="Portrait du fondateur de DaerTech" loading="eager" fetchpriority="high" decoding="async">
+          <img src="{{ asset('img/portrait-960.webp') }}" srcset="{{ asset('img/portrait-640.webp') }} 640w, {{ asset('img/portrait-960.webp') }} 960w" sizes="(min-width: 64rem) 30rem, 6rem" width="960" height="1107" alt="Daniel-Eric, fondateur de DaerTech" loading="eager" fetchpriority="high" decoding="async">
         </div>
       </div>
     </div>
+    <p class="hero-id" aria-hidden="true">Daniel-Eric, fondateur</p>
   </div>
   @if($page->image_url)<img class="hero-img" src="{{ $page->image_url }}" alt="" width="1120" height="420">@endif
 </div></section>
@@ -60,8 +61,8 @@
   <h2 class="sr-only" id="eng">Nos engagements</h2>
   <ul class="eng-grid">
     <li class="eng t-conseil" data-reveal><h3><span class="eng-fig" aria-hidden="true">A–Z</span><span>De A à Z</span></h3><p>Du conseil à la mise en ligne, puis à la prise en main par vos équipes.</p></li>
-    <li class="eng t-web" data-reveal><h3><span class="eng-fig">4</span><span>étapes</span></h3><p>Écouter, cadrer, mettre en place, accompagner.</p></li>
-    <li class="eng t-formation" data-reveal><h3><span class="eng-fig">3</span><span>domaines</span></h3><p>Conseil, web et applications, formation et assistance.</p></li>
+    <li class="eng t-web" data-reveal><h3><span class="eng-fig">24 h</span><span>ouvrées pour vous répondre</span></h3><p>Chaque demande reçoit une réponse sous 24 h ouvrées, de la part du fondateur.</p></li>
+    <li class="eng t-formation" data-reveal><h3><span class="eng-fig eng-word">Gratuit</span><span>premier échange</span></h3><p>Sans engagement : on se parle, vous décidez ensuite.</p></li>
   </ul>
 </div></section>
 @if($banner)<div class="band"><div class="container">@include('partials.banner')</div></div>@endif

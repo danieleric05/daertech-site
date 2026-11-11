@@ -1,7 +1,7 @@
 @php
  $s = $settings ?? [];
  $name = $s['company_name'] ?? 'DaerTech';
- $nav = ['home'=>'Accueil','conseil'=>'Conseil informatique','developpement'=>'Web et applications','formation'=>'Formation et assistance','actualites.index'=>'Actualités'];
+ $nav = ['conseil'=>'Conseil informatique','developpement'=>'Web et applications','formation'=>'Formation et assistance','actualites.index'=>'Actualités'];
 @endphp
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,7 +24,7 @@
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav"><span class="sr-only">Menu</span><svg aria-hidden="true" viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="bar-open" d="M4 7h16M4 12h16M4 17h16"/><path class="bar-close" d="M6 6l12 12M18 6L6 18"/></svg></button>
   <nav class="nav" id="nav" aria-label="Navigation principale"><ul>
     @foreach($nav as $r => $label)<li><a href="{{ route($r) }}" @if(request()->routeIs($r) || ($r==='actualites.index' && request()->routeIs('actualites.*'))) aria-current="page" @endif>{{ $label }}</a></li>@endforeach
-    <li><a class="btn" href="{{ route('contact') }}">Contact</a></li>
+    <li><a class="btn" href="{{ route('contact') }}" @if(request()->routeIs('contact')) aria-current="page" @endif>Contact</a></li>
   </ul></nav>
 </div></header>
 <main id="main">@include('partials.flash')@yield('content')</main>

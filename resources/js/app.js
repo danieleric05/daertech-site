@@ -25,6 +25,18 @@
   }
   var bad = document.querySelector('[aria-invalid="true"]');
   if (bad) bad.focus();
+  var cf = document.getElementById('contact-form');
+  if (cf) {
+    var cb = cf.querySelector('button[type="submit"]'), cl = cb && cb.textContent;
+    cf.addEventListener('submit', function () {
+      if (!cb) return;
+      cb.disabled = true; cb.textContent = 'Envoi en cours…'; cf.setAttribute('aria-busy', 'true');
+    });
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted || !cb) return;
+      cb.disabled = false; cb.textContent = cl; cf.removeAttribute('aria-busy');
+    });
+  }
   document.addEventListener('submit', function (e) {
     var m = e.target.getAttribute && e.target.getAttribute('data-confirm');
     if (m && !window.confirm(m)) e.preventDefault();

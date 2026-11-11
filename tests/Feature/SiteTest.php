@@ -120,7 +120,8 @@ class SiteTest extends TestCase
 
     public function test_contact_validation_and_honeypot(): void
     {
-        $this->post('/contact', [])->assertSessionHasErrors(['name', 'email', 'subject', 'message']);
+        $this->post('/contact', [])->assertSessionHasErrors(['name', 'email', 'phone', 'message']);
+        $this->followingRedirects()->from('/contact')->post('/contact', [])->assertSee('Le formulaire contient 4 erreurs', false);
 
         $valid = ['name' => 'Awa', 'email' => 'awa@example.ci', 'subject' => 'Bonjour', 'message' => 'Un message assez long.'];
         $this->post('/contact', $valid)->assertSessionHas('success');
@@ -128,6 +129,18 @@ class SiteTest extends TestCase
 
         $this->post('/contact', $valid + ['website' => 'http://spam.test'])->assertSessionHas('success');
         $this->assertSame(1, ContactMessage::count());
+    }
+
+    public function test_contact_accepts_phone_only_and_no_subject_but_requires_a_way_to_reply(): void
+    {
+        $base = ['name' => 'Awa', 'message' => 'Un message assez long.'];
+
+        $this->post('/contact', $base + ['phone' => '+225 07 00 00 00 00'])->assertSessionHas('success')->assertSessionHasNoErrors();
+        $this->assertDatabaseHas('contact_messages', ['phone' => '+225 07 00 00 00 00', 'email' => null, 'subject' => null]);
+
+        $this->post('/contact', $base)->assertSessionHasErrors(['email', 'phone']);
+        $this->post('/contact', $base + ['email' => 'awa@example.ci'])->assertSessionHas('success');
+        $this->assertSame(2, ContactMessage::count());
     }
 
     public function test_contact_throttle_counts_only_valid_submissions(): void

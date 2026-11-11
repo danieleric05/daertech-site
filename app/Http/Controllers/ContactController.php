@@ -24,6 +24,6 @@ class ContactController extends Controller
             RateLimiter::hit($key, 600);
         }
 
-        return back()->with('success', 'Merci, votre message a bien été envoyé. Nous vous répondrons rapidement.');
+        return back()->with('success', 'Merci, votre message est bien reçu. Daniel-Eric vous répond sous 24 h ouvrées.');
     }
 }

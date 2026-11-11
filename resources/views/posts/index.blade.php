@@ -10,7 +10,7 @@
       <p class="meta"><time datetime="{{ optional($post->published_at)->toDateString() }}">{{ optional($post->published_at)->format('d/m/Y') }}</time></p>
       <h2 style="font-size:1.2rem"><a href="{{ route('actualites.show', $post) }}">{{ $post->title }}</a></h2>
       <p>{{ $post->excerpt }}</p><a class="more" href="{{ route('actualites.show', $post) }}">Lire l'article<span class="sr-only"> : {{ $post->title }}</span></a></article>
-  @empty<p>Aucun article pour le moment.</p>@endforelse</div>
+  @empty<p>Aucun article pour le moment. <a href="{{ route('contact') }}">Une question sur un projet ? Écrivez-nous.</a></p>@endforelse</div>
   @if($posts->hasPages())<nav aria-label="Pagination" style="margin-top:2rem">{{ $posts->links() }}</nav>@endif
 </div></section>
 @endsection
