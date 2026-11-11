@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T12:00:00Z",
+  "title": "Design System: DaerTech",
+  "extensions": {
+    "colorMeta": {
+      "brand-blue": { "role": "primary", "displayName": "Bleu Facette", "tonalRamp": ["oklch(25% 0.08 235)", "oklch(35% 0.1 235)", "oklch(45% 0.11 235)", "oklch(60% 0.12 235)", "oklch(70% 0.11 235)", "oklch(78% 0.09 235)", "oklch(87% 0.05 235)", "oklch(95% 0.02 235)"] },
+      "brand-teal": { "role": "secondary", "displayName": "Teal Facette", "tonalRamp": ["oklch(25% 0.06 192)", "oklch(35% 0.08 192)", "oklch(45% 0.1 192)", "oklch(60% 0.11 192)", "oklch(72% 0.12 188)", "oklch(80% 0.1 188)", "oklch(88% 0.06 188)", "oklch(95% 0.02 188)"] },
+      "brand-orange": { "role": "tertiary", "displayName": "Orange Facette", "tonalRamp": ["oklch(28% 0.07 40)", "oklch(38% 0.1 40)", "oklch(50% 0.13 40)", "oklch(68% 0.15 40)", "oklch(75% 0.12 42)", "oklch(82% 0.09 45)", "oklch(89% 0.05 45)", "oklch(95% 0.02 45)"] },
+      "brand-red": { "role": "tertiary", "displayName": "Rouge Facette", "tonalRamp": ["oklch(25% 0.08 20)", "oklch(35% 0.12 20)", "oklch(45% 0.16 20)", "oklch(55% 0.18 20)", "oklch(70% 0.15 18)", "oklch(78% 0.11 18)", "oklch(87% 0.06 18)", "oklch(95% 0.02 18)"] },
+      "action-blue": { "role": "primary", "displayName": "Bleu Action" },
+      "action-teal": { "role": "primary", "displayName": "Teal Action" },
+      "night": { "role": "neutral", "displayName": "Nuit", "tonalRamp": ["#04060b", "#060912", "#080c16", "#0a101d", "#0d1424", "#121b2a", "#27344a", "#a3afc2"] },
+      "on-dark": { "role": "neutral", "displayName": "Brume" },
+      "on-dark-muted": { "role": "neutral", "displayName": "Brume voilée" },
+      "sky": { "role": "neutral", "displayName": "Ciel" },
+      "whatsapp": { "role": "neutral", "displayName": "Vert WhatsApp" },
+      "ink": { "role": "neutral", "displayName": "Encre" },
+      "soft": { "role": "neutral", "displayName": "Brume claire" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Titre du hero, des pages intérieures et du CTA final." },
+      "headline": { "displayName": "Headline", "purpose": "Titres de section." },
+      "title": { "displayName": "Title", "purpose": "Cartes, étapes, engagements, services." },
+      "body": { "displayName": "Body", "purpose": "Texte courant." },
+      "lead": { "displayName": "Lead", "purpose": "Chapeau du hero et prose." },
+      "label": { "displayName": "Label", "purpose": "Surtitres, chips, méta, numéros, en capitales." }
+    },
+    "shadows": [
+      { "name": "action-glow", "value": "0 0 0 1px rgb(255 255 255 / 0.16) inset, 0 10px 30px -8px rgb(42 143 192 / 0.7)", "purpose": "Bouton principal au repos." },
+      { "name": "action-glow-hover", "value": "0 0 0 1px rgb(255 255 255 / 0.28) inset, 0 14px 38px -6px rgb(47 210 200 / 0.55)", "purpose": "Bouton principal au survol." },
+      { "name": "card-halo", "value": "0 24px 60px -26px rgb(42 143 192 / 0.5)", "purpose": "Carte au survol." },
+      { "name": "glass-halo", "value": "0 40px 90px -40px rgb(42 143 192 / 0.45), 0 0 0 1px rgb(255 255 255 / 0.03) inset", "purpose": "Panneau de formulaire de contact." },
+      { "name": "admin-soft", "value": "0 1px 2px rgb(10 10 12 / 0.04), 0 8px 24px -8px rgb(10 10 12 / 0.1)", "purpose": "Panneaux et tuiles de l'administration." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.23, 1, 0.32, 1)", "purpose": "Courbe par défaut : survols, déploiements, élévations." },
+      { "name": "hover-fast", "value": "0.2s", "purpose": "Boutons, liens, navigation." },
+      { "name": "hover-card", "value": "0.3s", "purpose": "Cartes, projecteur, soulignement de navigation." },
+      { "name": "marquee", "value": "50s linear infinite", "purpose": "Bandeau technologies, en pause au survol." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "48rem" },
+      { "name": "lg", "value": "64rem" },
+      { "name": "xl", "value": "80rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bouton principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Action principale : dégradé bleu-teal, lueur colorée, montée au survol.",
+      "html": "<button class=\"ds-btn\">Demander un devis</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.25rem; border: 0; border-radius: .85rem; font: 700 .95rem/1.25 'Plus Jakarta Sans', system-ui, sans-serif; color: #fff; background-image: linear-gradient(135deg, #1a6e9a, #08777a); box-shadow: 0 0 0 1px rgb(255 255 255 / .16) inset, 0 10px 30px -8px rgb(42 143 192 / .7); cursor: pointer; transition: transform .2s cubic-bezier(.23,1,.32,1), box-shadow .2s cubic-bezier(.23,1,.32,1), filter .2s; } .ds-btn:hover { transform: translateY(-2px); filter: brightness(1.14); box-shadow: 0 0 0 1px rgb(255 255 255 / .28) inset, 0 14px 38px -6px rgb(47 210 200 / .55); } .ds-btn:active { transform: scale(.98); } .ds-btn:focus-visible { outline: 3px solid #8fd8ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Bouton WhatsApp",
+      "kind": "button",
+      "refersTo": "button-whatsapp",
+      "description": "Action secondaire vers WhatsApp : verre clair, hexagone vert.",
+      "html": "<div style=\"background:#060912;padding:1.5rem\"><button class=\"ds-btn-wa\">Écrire sur WhatsApp</button></div>",
+      "css": ".ds-btn-wa { display: inline-flex; align-items: center; gap: .6rem; padding: .75rem 1.25rem; border: 1px solid rgb(255 255 255 / .26); border-radius: .85rem; background: rgb(255 255 255 / .07); font: 700 .95rem/1.25 'Plus Jakarta Sans', system-ui, sans-serif; color: #fff; cursor: pointer; transition: background-color .2s, box-shadow .2s; } .ds-btn-wa::before { content: ''; width: .85rem; aspect-ratio: 52/60; background: #3be07f; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); } .ds-btn-wa:hover { background: rgb(255 255 255 / .14); border-color: rgb(255 255 255 / .4); box-shadow: 0 10px 30px -10px rgb(59 224 127 / .5); } .ds-btn-wa:focus-visible { outline: 3px solid #8fd8ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Carte",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Verre sur nuit, halo bleu et élévation au survol, lien mono qui glisse.",
+      "html": "<div style=\"background:#080c16;padding:1.5rem\"><article class=\"ds-card\"><h3>Conseil informatique</h3><p>Un regard extérieur pour choisir les bons outils.</p><a class=\"ds-more\" href=\"#\">En savoir plus</a></article></div>",
+      "css": ".ds-card { display: flex; flex-direction: column; max-width: 22rem; padding: 1.75rem; border: 1px solid rgb(255 255 255 / .1); border-radius: 1.25rem; background: rgb(255 255 255 / .04); transition: transform .3s cubic-bezier(.23,1,.32,1), box-shadow .3s cubic-bezier(.23,1,.32,1), border-color .3s; } .ds-card:hover { transform: translateY(-4px); border-color: rgb(255 255 255 / .22); box-shadow: 0 24px 60px -26px rgb(42 143 192 / .5); } .ds-card h3 { margin: 0 0 .5rem; font: 800 1.3rem/1.15 'Bricolage Grotesque', system-ui, sans-serif; letter-spacing: -.02em; color: #fff; } .ds-card p { margin: 0 0 1rem; font: 400 1rem/1.625 'Plus Jakarta Sans', system-ui, sans-serif; color: #a3afc2; } .ds-more { font: 500 .85rem 'JetBrains Mono', ui-monospace, monospace; color: #8fd0f0; text-decoration: none; } .ds-more::after { content: '\\2192'; display: inline-block; margin-left: .4em; transition: transform .25s cubic-bezier(.23,1,.32,1); } .ds-card:hover .ds-more::after { transform: translateX(4px); } .ds-more:focus-visible { outline: 3px solid #8fd8ff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Étiquette mono en pilule, précédée d'un hexagone teinté.",
+      "html": "<div style=\"background:#060912;padding:1.5rem\"><span class=\"ds-chip\">Sur mesure</span></div>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: .55rem; padding: .4rem .85rem .4rem .65rem; border: 1px solid rgb(255 255 255 / .12); border-radius: 999px; background: rgb(255 255 255 / .035); font: 400 .78rem 'JetBrains Mono', ui-monospace, monospace; color: #c4cfdf; } .ds-chip::before { content: ''; width: .7rem; aspect-ratio: 52/60; background: #0a9a9a; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }"
+    },
+    {
+      "name": "Champ (site)",
+      "kind": "input",
+      "refersTo": "input-site",
+      "description": "Champ du formulaire de contact sur verre, focus teal.",
+      "html": "<div style=\"background:#0a101d;padding:1.5rem\"><label class=\"ds-label\" for=\"ds-n\">Nom</label><input id=\"ds-n\" class=\"ds-input\" placeholder=\"Votre nom\"></div>",
+      "css": ".ds-label { display: block; margin-bottom: .375rem; font: 700 .875rem 'Plus Jakarta Sans', system-ui, sans-serif; color: #e8eef7; } .ds-input { width: 100%; max-width: 24rem; padding: .75rem 1rem; border: 1px solid rgb(255 255 255 / .42); border-radius: .85rem; background: rgb(4 6 10 / .6); font: 400 1rem 'Plus Jakarta Sans', system-ui, sans-serif; color: #fff; transition: border-color .2s, box-shadow .2s; } .ds-input:focus { border-color: #2fd2c8; outline: 2px solid #2fd2c8; outline-offset: 0; box-shadow: 0 0 0 5px rgb(47 210 200 / .18); }"
+    },
+    {
+      "name": "Libellé de section",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Surtitre mono en capitales, précédé d'un hexagone bleu.",
+      "html": "<div style=\"background:#060912;padding:1.5rem\"><p class=\"ds-eyebrow\">Nos services</p></div>",
+      "css": ".ds-eyebrow { display: flex; align-items: center; gap: .75rem; margin: 0; font: 500 .78rem 'JetBrains Mono', ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: #6cc3ee; } .ds-eyebrow::before { content: ''; width: 1.05rem; aspect-ratio: 52/60; background: #2a8fc0; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }"
+    },
+    {
+      "name": "Étape hexagonale",
+      "kind": "custom",
+      "refersTo": "steps",
+      "description": "Numéro d'étape dans un hexagone teinté avec lueur.",
+      "html": "<div style=\"background:#080c16;padding:1.5rem;display:flex;gap:1rem\"><span class=\"ds-step\">01</span><span class=\"ds-step\" style=\"--c:#0a9a9a\">02</span><span class=\"ds-step\" style=\"--c:#e8734a\">03</span><span class=\"ds-step\" style=\"--c:#c8323f\">04</span></div>",
+      "css": ".ds-step { --c: #2a8fc0; display: grid; place-items: center; width: 3.6rem; aspect-ratio: 52/60; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); background: color-mix(in srgb, var(--c) 40%, #080c16); font: 600 .85rem 'JetBrains Mono', ui-monospace, monospace; color: #fff; }"
+    },
+    {
+      "name": "Navigation admin",
+      "kind": "nav",
+      "refersTo": "admin-nav-active",
+      "description": "Entrées de la barre latérale admin, hexagone de repère, entrée active teintée.",
+      "html": "<nav class=\"ds-side\"><a href=\"#\">Tableau de bord</a><a href=\"#\" aria-current=\"page\">Services</a><a href=\"#\">Messages</a></nav>",
+      "css": ".ds-side { display: flex; flex-direction: column; gap: .25rem; width: 15rem; padding: 1rem; background: #fff linear-gradient(90deg, #2a8fc0, #0a9a9a 40%, #e8734a 72%, #c8323f) 0 0 / 100% 3px no-repeat; } .ds-side a { display: flex; align-items: center; gap: .625rem; min-height: 2.75rem; padding: .5rem .75rem; border-radius: .75rem; font: 600 .95rem 'Plus Jakarta Sans', system-ui, sans-serif; color: #4b515c; text-decoration: none; transition: background-color .2s, color .2s; } .ds-side a::before { content: ''; width: .7rem; aspect-ratio: 52/60; background: currentColor; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); opacity: .35; } .ds-side a:hover { background: color-mix(in srgb, #1c6f98 8%, transparent); color: #0a0a0c; } .ds-side a[aria-current='page'] { background: color-mix(in srgb, #1c6f98 12%, transparent); color: #1c6f98; } .ds-side a[aria-current='page']::before { background: linear-gradient(135deg, #2a8fc0, #0a9a9a 45%, #e8734a 75%, #c8323f); opacity: 1; } .ds-side a:focus-visible { outline: 3px solid #1c6f98; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Facettes",
+    "overview": "Le logo DaerTech est un hexagone en quatre facettes (bleu, teal, orange, rouge). Tout le système en découle : l'hexagone devient puce, nœud de schéma, numéro d'étape, séparateur de section, bouton de navigation et filigrane. Le site public vit sur une nuit profonde quadrillée, où les quatre teintes ne s'allument que par petites touches : un filet, une lueur, un chiffre. L'effet recherché est celui d'un atelier technique éclairé de l'intérieur, sérieux mais vivant.\n\nLe caractère est technique et ludique. Technique par le mono (JetBrains Mono) des libellés, le quadrillage blueprint, les schémas à fils et nœuds, les numéros tabulaires. Ludique par le mouvement : projecteur qui suit le pointeur sur les cartes, flèches qui glissent, chaîne d'hexagones accrochée aux filets, bandeau qui défile, impulsions le long des fils. Chaque effet se coupe sous prefers-reduced-motion.\n\nL'administration partage les mêmes tokens (dégradé de marque, hexagones, polices) mais bascule en mode Operate : fond clair soft, panneaux blancs, ombres douces, accent bleu foncé, et un mode sombre complet piloté par data-theme.",
+    "keyCharacteristics": [
+      "Fond nuit (#060912 à #0d1424) avec quadrillage fin de 28 px, jamais un aplat nu.",
+      "Hexagone (ratio 52 / 60) comme unique forme signature ; pas de points ronds, pas d'icônes génériques en puce.",
+      "Quatre teintes de marque attribuées par service, en version claire pour le texte sur fond sombre.",
+      "Typo display Bricolage Grotesque très serrée (−0,035 à −0,045 em), corps Plus Jakarta Sans, libellés en JetBrains Mono capitales espacées.",
+      "Verre discret (blanc 4 %) et filets blancs 10 % plutôt qu'ombres portées.",
+      "Mouvement court sur cubic-bezier(0.23, 1, 0.32, 1), toujours désactivable."
+    ],
+    "rules": [
+      { "name": "The One Tone Per Service Rule", "body": "Chaque service a une teinte fixe (conseil/assistance = bleu, web = teal, mobile/formation = orange, marketing = rouge), transmise par les variables --tone, --tone-t, --hexbg. Ne jamais recolorer un service au cas par cas.", "section": "colors" },
+      { "name": "The Light-Tint Text Rule", "body": "Sur fond nuit, le texte coloré utilise toujours la teinte claire (tint-*), jamais la teinte de marque brute.", "section": "colors" },
+      { "name": "The Four-In-Order Rule", "body": "Quand les quatre teintes apparaissent ensemble (chaîne, filets de header et footer, dégradé de soulignement), l'ordre est bleu, teal, orange, rouge.", "section": "colors" },
+      { "name": "The Mono Means Metadata Rule", "body": "JetBrains Mono est réservé aux libellés, méta, chips, numéros d'étape et liens « Lire l'article ». Jamais pour un titre ni un paragraphe.", "section": "typography" },
+      { "name": "The Tight Display Rule", "body": "Plus le titre est grand, plus l'interlettrage est serré : −0.02em (title), −0.035em (headline), −0.045em (display).", "section": "typography" },
+      { "name": "The Light Not Shadow Rule", "body": "Sur le site public, une surface se détache par un filet, un verre ou une lueur colorée. Pas d'ombre grise portée.", "section": "elevation" },
+      { "name": "The Hexagon Is The Bullet Rule", "body": "Toute puce, marqueur d'état actif, numéro ou nœud est un hexagone. Pas de point rond, pas de coche générique.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do poser chaque section du site sur un palier de nuit (#060912 à #0d1424) avec le quadrillage de 28px ou la trame nid d'abeille.",
+      "Do attribuer la teinte d'un service via .t-conseil, .t-web, .t-mobile, .t-formation, .t-marketing, .t-assistance.",
+      "Do utiliser les teintes claires (#6cc3ee, #3fd6cc, #f59a72, #ff8791) pour tout texte coloré sur nuit.",
+      "Do marquer libellés, méta et numéros en JetBrains Mono capitales espacées de 0.12em.",
+      "Do garder des cibles tactiles d'au moins 2.75rem (44px) et un contour de focus visible de 3px.",
+      "Do couper toute animation sous prefers-reduced-motion: reduce.",
+      "Do réutiliser les variables --hex-*, --hexs-*, --chain, --honey, --flower plutôt que de redessiner un hexagone."
+    ],
+    "donts": [
+      "Don't modifier le logo hexagonal ni ses quatre couleurs.",
+      "Don't utiliser de puce ronde, d'icône générique en guise de puce ou de coche : l'hexagone remplit ce rôle.",
+      "Don't poser une ombre portée grise sur le site public ; utiliser filet, verre ou lueur colorée.",
+      "Don't écrire un texte en teinte de marque brute (#2a8fc0, #c8323f…) sur fond nuit : contraste insuffisant.",
+      "Don't mélanger l'ordre des quatre teintes quand elles apparaissent ensemble.",
+      "Don't appliquer les styles du site public hors du scope .site : l'administration garde son thème clair et son mode sombre."
+    ]
+  }
+}
